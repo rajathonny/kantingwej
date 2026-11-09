@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useMemo, useState } from "react";
 import { rupiah, type Menu } from "@/data/data";
 
-export default function KatalogInteraktif({ menu }: { menu: Menu[] }) {
+export default function Katalog({ menu }: { menu: Menu[] }) {
   const [cari, setCari] = useState("");
   const [kategori, setKategori] = useState("Semua");
   const [urut, setUrut] = useState("tanggal");
@@ -139,12 +139,14 @@ export default function KatalogInteraktif({ menu }: { menu: Menu[] }) {
                 {item.stok === 0 ? "Stok habis" : `Sisa ${item.stok} stok`}
               </p>
 
-              <Link
-                href={`/menu/${item.id}`}
-                className="mt-4 inline-flex rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
-              >
-                Lihat detail
-              </Link>
+              <div className="mt-4 flex items-center justify-between gap-3">
+                <Link
+                  href={`/menu/${item.id}`}
+                  className="inline-flex rounded-lg bg-blue-600 px-3 py-2 text-sm font-medium text-white transition hover:bg-blue-700"
+                >
+                  Lihat detail
+                </Link>
+              </div>
             </div>
           ))}
         </div>

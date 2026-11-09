@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import FavoriteButton from "@/app/compo/favorit";
+import FormPesen from "@/app/compo/formpesen";
 import { menu, rupiah } from "@/data/data";
 
 export function generateStaticParams() {
@@ -39,12 +41,19 @@ export default async function DetailMenuPage({
           </p>
         </div>
 
-        <Link
-          href="/menu"
-          className="mt-8 inline-block rounded-lg bg-blue-600 px-4 py-2.5 font-medium text-white hover:bg-blue-700"
-        >
-          Kembali ke katalog
-        </Link>
+        <div className="mt-8 flex flex-wrap gap-3">
+          <Link
+            href="/menu"
+            className="inline-flex rounded-lg bg-blue-600 px-4 py-2.5 font-medium text-white hover:bg-blue-700"
+          >
+            Kembali ke katalog
+          </Link>
+          <FavoriteButton menuId={item.id} />
+        </div>
+
+        <div className="mt-6">
+          <FormPesen menu={item} />
+        </div>
       </div>
     </main>
   );
